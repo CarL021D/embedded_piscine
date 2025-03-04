@@ -2,11 +2,12 @@ SRC = main.c
 OBJS = main.o
 TARGET = main.bin
 TARGET_HEX = main.hex
-F_CPU = 115200
-
+F_CPU = 1600000
 CC = avr-gcc
 FLAGS = -mmcu=atmega328p
 PORT =/dev/ttyACM0
+
+all: hex flash
 
 hex:
 	$(CC) -Os -DF_CPU=$(F_CPU) $(FLAGS) -c -o $(OBJS) $(SRC)
@@ -19,4 +20,4 @@ flash:
 clean:
 	rm -f $(OBJS)
 	rm -f $(TARGET)
-	rm -f $(TARGET_HEX)	
+	rm -f $(TARGET_HEX)
