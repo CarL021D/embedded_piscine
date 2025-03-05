@@ -1,18 +1,15 @@
 #include <avr/io.h>
 #include <util/delay.h>
 
-#include <avr/io.h>
-#include <util/delay.h>
-
 int main() {
     
-    DDRB = (1<<0);
+    DDRB |= (1 << PB0);
 
     while (1)
     {
-        if (( PIND & (1 << PD4 ) ))
-            PORTB &= ~( 1 << PB1 );
+        if (PIND & (1 << PD2))
+            PORTB &= ~(1 << PB0);
         else
-            PORTB = ( 1 << PB1 );
+            PORTB |= (1 << PB0);
     };
 }
